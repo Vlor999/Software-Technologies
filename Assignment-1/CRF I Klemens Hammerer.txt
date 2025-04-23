@@ -1,0 +1,94 @@
+Code review form - Software Technology - Summer Term 2025
+
+Author: Klemens Hammerer (12211961)
+Source code: ...\stat\regression\SimpleRegression.java
+
+-----------------------
+
+1.) General: 
+
+Does the code work?
+* Yeah the Code works as intended
+
+Does it perform its intended function, the logic is correct etc.?
+* It generates a interpolated/regressed line into the 2 Dimensional plane 
+
+Is all the code easily understood?
+* ALl except the regression part itself where some Magic is happening
+
+Does it conform to your agreed coding conventions?
+* Variable names, Function names and these kind of things are being followed yeah
+
+Is the code as modular as possible?
+* Yes, it is
+
+Is there any redundant or duplicate code?
+* No, every part where Redundant Code would have been needed, functions were written to omit that
+
+Can any global variables be replaced?
+* There are none, so no.
+
+Is there any commented-out code?
+* No there isn't.
+
+Do loops have a set length and correct termination conditions?
+* Yes, they all stop when iterator i reaches data.length.
+
+Can any of the code be replaced with library functions?
+* No, wherever library Code could be used, it's already being used (no redundant/duplicate Code!)
+
+Can any logging or debugging code be removed?
+* There is no logging/debugging in this Code.
+
+
+2.) Security:
+
+Are all data inputs checked (for the correct type, length, format, and range) and encoded?
+* No they are not.
+
+Where third-party utilities are used, are returning errors being caught?
+* The third party utilities used don't throw exceptions. 
+
+Are output values checked and encoded?
+* Not Checked, but the regression function encodes the final Output into a special Data Type (RegressionResult)
+
+Are invalid parameter values handled?
+* Only where wrong parameters could result in undefined Behaviour. (Empty list in for loop just doesn't do anything but as a list of parameters for another function it has to be checked which it is)
+
+3.) Documentation:
+
+Do comments exist and describe the intent of the code?
+* No, only function headers exist.
+
+Are all functions commented?
+* Yeah they are all commented with all possible parameters and return values.
+
+Is any unusual behavior or edge-case handling described?
+* Yes, edge cases are described like finding no interception point if the slope is given with NaN
+
+Is the use and function of third-party libraries documented?
+* No, but the only third-party libraries used are self explanatory ones like min and max.
+
+Are data structures and units of measurement explained?
+Data Structures are explained well. Units of measurements not but you don't need that in case of a coordinate System since coordinates don't have units of measure.
+
+Is there any incomplete code? If so, should it be removed or flagged with a suitable marker like ‘TODO’?
+* No there is no incomplete Code and there are and don't have to be any 'TODO' Flags.
+
+
+4.) Testing:
+
+Is the code testable? I.e. don’t add too many or hide dependencies, unable to initialize objects, test frameworks can use methods etc.
+* Only hides one dependency, initializing Objects easy
+
+Do tests exist, and are they comprehensive? I.e., has at least your agreed code coverage.
+* Tests exist yeah. All Functions are at least tested once also with edge cases
+
+Are arrays checked for ‘out-of-bound’ errors?
+* No they are not.
+
+Could any test code be replaced with an existing API?
+* Not to my knowledge no.
+
+
+
