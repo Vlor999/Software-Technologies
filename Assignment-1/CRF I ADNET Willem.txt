@@ -1,0 +1,94 @@
+Code review form - Software Technology - Summer Term 2025
+
+Author: ADNET Willem 12444262
+Source code: stat/ranking/NaturalRanking.java
+
+-----------------------
+
+1.) General: 
+
+Does the code work?
+* Yes, the code works.
+
+Does it perform its intended function, the logic is correct etc.?
+* It ranks data based on natural ordering, handling NaNs and ties as per the configured strategies.
+
+Is all the code easily understood?
+* Most of the code is understandable, but some parts (e.g., tie resolution logic) require deeper familiarity with the domain.
+
+Does it conform to your agreed coding conventions?
+* Yes, the code follows standard conventions for naming and structure.
+
+Is the code as modular as possible?
+* Yes, the code is modular, with clear separation of concerns. Most of the fucntions are small enough to be used into other context.
+Easily reusable.
+
+Is there any redundant or duplicate code?
+* No, there is not.
+
+Can any global variables be replaced?
+* No global variables are used. Or at least those are used as final so no need to replace them.
+
+Is there any commented-out code?
+* No commented-out code is present.
+
+Do loops have a set length and correct termination conditions?
+* Yes, all loops have proper termination conditions or a length previously defined.
+
+Can any of the code be replaced with library functions?
+* No, the code already uses appropriate library functions where applicable. Or I personal do not know the libraries that can replace current code part.
+
+Can any logging or debugging code be removed?
+* There is no logging or debugging code in the implementation.
+
+
+2.) Security:
+
+Are all data inputs checked (for the correct type, length, format, and range) and encoded?
+* No, input validation is not explicitly performed.
+
+Where third-party utilities are used, are returning errors being caught?
+* The code does not handle exceptions from third-party utilities, but they are unlikely to throw errors in this context.
+
+Are output values checked and encoded?
+* Output values are not explicitly checked but are generated as expected.
+
+Are invalid parameter values handled?
+* Invalid parameters (e.g., NaNs) are handled based on the configured NaNStrategy.
+
+
+3.) Documentation:
+
+Do comments exist and describe the intent of the code?
+* Yes comments exist and describe the intent of the code. The density of comments to respect the normal conventions.
+
+Are all functions commented?
+* Yes all functions are commented with their purpose and parameters. Same idea in here with the density.
+
+Is any unusual behavior or edge-case handling described?
+* Yes edge cases like NaN handling and tie resolution are described to porvid mroe details.
+
+Is the use and function of third-party libraries documented?
+* No the libraries used are self-explanatory.
+
+Are data structures and units of measurement explained?
+* Yes, data structures are explained. There is no units of measured in here.
+
+Is there any incomplete code? If so, should it be removed or flagged with a suitable marker like ‘TODO’?
+* There is no incomplete code.
+
+
+4.) Testing:
+
+Is the code testable? I.e. don’t add too many or hide dependencies, unable to initialize objects, test frameworks can use methods etc.
+* The code is testable, with minimal dependencies.
+
+Do tests exist, and are they comprehensive? I.e., has at least your agreed code coverage.
+* Tests provided do run perfectly on this part of the source code. And the coverage do look consistent.
+
+Are arrays checked for ‘out-of-bound’ errors?
+* There is no explicit checks for such errors.
+
+Could any test code be replaced with an existing API?
+* In my current knowledge I do not know API that can test this part of ths code.
+
