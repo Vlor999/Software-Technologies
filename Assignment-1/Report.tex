@@ -1,0 +1,97 @@
+\documentclass[twocolumn,10pt]{article}
+\usepackage{times}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{pdfpages}
+\usepackage{geometry}
+\usepackage{enumitem}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=10mm,
+ right=10mm,
+ top=5mm,
+ bottom=20mm
+ }
+ \usepackage[T1]{fontenc} 
+
+% Use this template for your reports in the Software Technology course. Please submit the report as a PDF and not as a LaTeX file. 
+
+\begin{document}
+
+\title{Assignment 1 -- Using tools for checking code compliance}
+\author{ADNET Willem (12444262), Klemens Hammerer (12211961), and ZABIEGO Hugo (12445574) \\
+group I, 
+}
+
+\date{25/04/2025}
+
+
+
+
+\maketitle
+
+\begin{abstract}
+Static code analysis tools such as Checkstyle and PMD produce meaningful results by identifying violations of coding standards, particularly in areas like indentation and formatting. These findings are crucial for maintaining consistent code style, improving readability, and facilitating collaboration among developers. The tools’ outputs often align with what would be discovered during a manual code review, though they provide a more systematic and exhaustive analysis. However, to enhance the usefulness of their results, several improvements are needed: clearer contextual explanations for each rule violation, grouping of similar issues for better readability, and auto-suggestions for corrections. Reducing verbosity in the output and offering a summarized view of errors with detailed reports in appendices would also improve usability. These patterns reflect a systemic misalignment with the project's style guidelines. Additionally, a modification was made to remove the header check constraint, allowing the tool to run uninterrupted, albeit at the cost of excluding certain checks. Overall, while the tools provide strong support for quality assurance, their impact can be significantly enhanced through better customization and integration into the development workflow.
+\end{abstract}
+
+\section{Introduction}
+
+As part of static code analysis, tools like Checkstyle and PMD play a crucial role in ensuring the quality of source code. They help automatically detect deviations from coding conventions, particularly in terms of indentation, structure, and readability. This report focuses on assessing the relevance and usefulness of the results produced by these tools, comparing them with what would typically be observed in a manual code review. It also outlines current limitations and suggests improvements to make the tools' outputs more actionable for developers.
+
+\section{ Is the outcome of the tools meaningful? What would be required to make it meaningful?}
+
+The outcome of the tools is meaningful as it highlights specific issues in the code, particularly related to indentation. These issues are critical for maintaining code readability and adhering to coding standards. However, the output could be made more meaningful by:
+
+Providing context for the errors: The tool should explain why the specific indentation levels are expected and how they align with the coding standards.
+Grouping similar issues: Instead of listing each error individually, grouping errors by type or section of the code would make the output easier to interpret.
+Suggesting fixes: The tool could provide auto-correction suggestions or commands to reformat the code automatically.
+Reducing verbosity: The output is lengthy and repetitive, which can overwhelm the user. Summarizing the errors with a detailed breakdown in an appendix would improve usability.
+Additionally, it is worth noting that the header limitation was deleted to avoid issues with the Checkstyle bash function. This modification ensured that the tool could run without interruptions but may have impacted the scope of the analysis by excluding header-related checks.
+
+\section{Is the outcome of the tools supportive and similar to the one obtained from the code review ?}
+The outcome of the tools is supportive and likely similar to what would be obtained from a manual code review. A code review would also identify the same indentation issues but might provide additional context, such as the impact of these issues on code maintainability and readability. However, the tool's output is more exhaustive and precise in pinpointing the exact lines and types of errors, which might be missed in a manual review.
+
+\section{Explanation of the Outcome}
+The Checkstyle tool identified numerous indentation issues in the file we studied. Most of errors indicate that: 
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+    \item Lots of block,while and case have an indentation issue, making the reading more difficult
+    \item Some items (-/?/,/if/else/{/}/!=/for) are not preceded of followed by whitespaces whereas it is a coding convention. Otherwise, some items ((/)/;) are whereas they should not be.
+    \item A few expressions do not need parentheses around 
+\end{enumerate}
+
+Here is a summary of errors from the PMD outcome:
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+    \item Some local variables could have been final variables and could be instantiated outsides loops
+    \item Many casts could be avoided 
+    \item Some if statements are misused (using literals especially)
+    \item Many for loops could be replaced by foreach loops (more efficient)    
+\end{enumerate}
+
+\section{Conclusions}
+
+The results produced by Checkstyle and PMD are generally meaningful, especially in highlighting key issues related to indentation, whitespace, and coding conventions. These problems impact code readability and compliance with style guidelines. However, the output could be improved by offering better context, grouping similar errors, suggesting automatic fixes, and reducing verbosity. The tools’ findings closely align with what would be discovered during a manual code review, though they are often more precise and exhaustive.
+
+\newpage
+% Note: The appendix should start on page 2. Use \newpage if necessary.
+
+\begin{appendix}
+\section{Appendix : NaturalRanking.java}
+
+\end{appendix}
+
+Tool Output Summary:
+
+Total Errors: 50+
+Error Type: Indentation
+Additional Notes:
+
+The header limitation was deleted to avoid issues with the Checkstyle bash function. While this allowed the tool to run smoothly, it may have excluded header-related checks from the analysis.
+Recommendations:
+
+Use an IDE or tool with auto-formatting capabilities to enforce consistent indentation.
+Integrate Checkstyle into the CI/CD pipeline to catch such issues early.
+Provide developers with training or documentation on the project's coding standards
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
