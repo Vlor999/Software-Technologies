@@ -9,10 +9,10 @@
  \geometry{
  a4paper,
  total={170mm,257mm},
- left=10mm,
- right=10mm,
+ left=8mm,
+ right=8mm,
  top=5mm,
- bottom=20mm
+ bottom=15mm
  }
  \usepackage[T1]{fontenc} 
 
@@ -36,38 +36,43 @@ group I,
 For this first task, we use the tools Checkstyle and PMD, which respectively provide indications on compliance with coding standards as well as on code indentation and formatting. These tools help improve code readability and understanding; they report all errors using a specific error formatting style. As a result, it is simple and quick to identify where coding or formatting errors made by the developer come from.
 This verification method, although energy-consuming and sometimes highlighting minor issues, allows for very clear and highly readable code, making it easy for anyone to modify or add code without any confusion.
 However, it is important to note that these tools do not verify the execution of the code; therefore, additional tests are necessary to ensure that the code is both clean and functionally correct.
-We tested the /stat directory, focusing specifically on the files correlation/Covariance.java, regression/SimpleRegression.java, and ranking/NaturalRanking.java.
+We tested the \textbf{/stat} directory, focusing specifically on the files : 
+\begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \item correlation/Covariance.java
+    \item regression/SimpleRegression.java
+    \item ranking/NaturalRanking.java
+\end{itemize}
 
 \end{abstract}
 
 \section{Introduction}
 
-As part of the syntax analysis of the code in the /stat folder, the tools Checkstyle and PMD help measure the quality of the provided source code and correct potential syntax errors made by the developer. Making code more readable is in everyone's interest, as it allows errors and possible code optimizations to be detected more easily. Additionally, these tools suggest
-some code improvements to enhance code maintainability and efficiency.
+As part of the syntax analysis of the code in the \textbf{/stat} folder, the tools Checkstyle and PMD help measure the quality of the provided source code and correct potential syntax errors made by the developer. Making code more readable is in everyone's interest, as it allows errors and possible code optimizations to be detected more easily. Additionally, these tools suggest some code improvements to enhance code maintainability and efficiency. 
 
-\section{ Is the outcome of the tools meaningful? What would be required to make it meaningful?}
+\section{Is the outcome of the tools meaningful ? What would be required to make it meaningful ?}
 
 The outcome of the tools is meaningful as it highlights specific issues in the code, particularly related to indentation. These issues are critical for maintaining code readability and adhering to coding standards. However, the output could be made more meaningful by:
 
-Providing context for the errors: The tool should explain why the specific indentation levels are expected and how they align with the coding standards.
-Grouping similar issues: Instead of listing each error individually, grouping errors by type or section of the code would make the output easier to interpret.
-Suggesting fixes: The tool could provide auto-correction suggestions or commands to reformat the code automatically.
-Reducing verbosity: The output is lengthy and repetitive, which can overwhelm the user. Summarizing the errors with a detailed breakdown in an appendix would improve usability.
-Additionally, it is worth noting that the header limitation was deleted to avoid issues with the Checkstyle bash function. This modification ensured that the tool could run without interruptions but may have impacted the scope of the analysis by excluding header-related checks.
+\begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \item Providing context for the errors: The tool should explain why the specific indentation levels are expected and how they align with the coding standards.
+    \item Grouping similar issues: Instead of listing each error individually, grouping errors by type or section of the code would make the output easier to interpret, faster to write (if lots of issues) and less heavy.
+    \item Suggesting fixes: The tool could provide auto-correction suggestions or commands to reformat the code automatically. 
+    \item Reducing verbosity: The output is lengthy and repetitive, which can overwhelm the user. Summarizing the errors with a detailed breakdown in an appendix would improve usability.
+    \item Additionally, it is worth noting that the header limitation was deleted to avoid issues with the Checkstyle bash function. This modification ensured that the tool could run without interruptions but may have impacted the scope of the analysis by excluding header-related checks. Deleting the header was mandatory since the version of Checkstyle was not concording with the xml files.
+\end{itemize}
 
 \section{Is the outcome of the tools supportive and similar to the one obtained from the code review ?}
-The outcome of the tools is supportive and likely similar to what would be obtained from a manual code review. A code review would also identify the same indentation issues but might provide additional context, such as the impact of these issues on code maintainability and readability. However, the tool's output is more exhaustive and precise in pinpointing the exact lines and types of errors, which might be missed in a manual review.
+The outcome of the tools is supportive and likely similar to what would be obtained from a manual code review. A code review would also identify the same indentation issues but might provide additional context, such as the impact of these issues on code maintainability and readability. However, the tool's output is more exhaustive and precise in pinpointing the exact lines and types of errors, which might be missed in a manual review. Also, a code review is more often about how to maintain code, then, small issues about a missing space or a small detail won't be noticed. This is why such automatic tools are used as pre-commit/push options. 
 
 \section{Explanation of the Outcome}
-The Checkstyle tool identified numerous indentation issues in the file we studied. Most of errors indicate that: 
-\begin{enumerate}[itemsep=0pt, topsep=0pt]
-    \item Lots of block,while and case have an indentation issue, making the reading more difficult
+The Checkstyle tool identified numerous indentation issues in our files. Most of errors indicate that: 
+\begin{enumerate}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \item Lots of block,while and case have an indentation issue, making the reading more difficult.
     \item Some items (-/?/,/if/else/{/}/!=/for) are not preceded of followed by whitespaces whereas it is a coding convention. Otherwise, some items ((/)/;) are whereas they should not be.
     \item A few expressions do not need parentheses around 
 \end{enumerate}
-
 Here is a summary of errors from the PMD outcome:
-\begin{enumerate}[itemsep=0pt, topsep=0pt]
+\begin{enumerate}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
     \item Some local variables could have been final variables and could be instantiated outsides loops
     \item Many casts could be avoided 
     \item Some if statements are misused (using literals especially)
@@ -75,7 +80,6 @@ Here is a summary of errors from the PMD outcome:
 \end{enumerate}
 
 \section{Conclusions}
-
 Checkstyle and PMD provide fairly relevant results, particularly regarding indentation, variable declarations (use of final), the use of spaces around special characters, and some code optimizations (unnecessary casts, non-optimal for loops).
 Moreover, the syntax error reports are clearly and simply formatted, making them easy to understand. These tools are a valuable asset for maintaining clean syntax and can greatly facilitate the work of future developers working on the same code.
 
