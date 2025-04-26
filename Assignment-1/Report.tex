@@ -33,12 +33,17 @@ group I,
 \maketitle
 
 \begin{abstract}
-Static code analysis tools such as Checkstyle and PMD produce meaningful results by identifying violations of coding standards, particularly in areas like indentation and formatting. These findings are crucial for maintaining consistent code style, improving readability, and facilitating collaboration among developers. The tools’ outputs often align with what would be discovered during a manual code review, though they provide a more systematic and exhaustive analysis. However, to enhance the usefulness of their results, several improvements are needed: clearer contextual explanations for each rule violation, grouping of similar issues for better readability, and auto-suggestions for corrections. Reducing verbosity in the output and offering a summarized view of errors with detailed reports in appendices would also improve usability. These patterns reflect a systemic misalignment with the project's style guidelines. Additionally, a modification was made to remove the header check constraint, allowing the tool to run uninterrupted, albeit at the cost of excluding certain checks. Overall, while the tools provide strong support for quality assurance, their impact can be significantly enhanced through better customization and integration into the development workflow.
+For this first task, we use the tools Checkstyle and PMD, which respectively provide indications on compliance with coding standards as well as on code indentation and formatting. These tools help improve code readability and understanding; they report all errors using a specific error formatting style. As a result, it is simple and quick to identify where coding or formatting errors made by the developer come from.
+This verification method, although energy-consuming and sometimes highlighting minor issues, allows for very clear and highly readable code, making it easy for anyone to modify or add code without any confusion.
+However, it is important to note that these tools do not verify the execution of the code; therefore, additional tests are necessary to ensure that the code is both clean and functionally correct.
+We tested the /stat directory, focusing specifically on the files correlation/Covariance.java, regression/SimpleRegression.java, and ranking/NaturalRanking.java.
+
 \end{abstract}
 
 \section{Introduction}
 
-As part of static code analysis, tools like Checkstyle and PMD play a crucial role in ensuring the quality of source code. They help automatically detect deviations from coding conventions, particularly in terms of indentation, structure, and readability. This report focuses on assessing the relevance and usefulness of the results produced by these tools, comparing them with what would typically be observed in a manual code review. It also outlines current limitations and suggests improvements to make the tools' outputs more actionable for developers.
+As part of the syntax analysis of the code in the /stat folder, the tools Checkstyle and PMD help measure the quality of the provided source code and correct potential syntax errors made by the developer. Making code more readable is in everyone's interest, as it allows errors and possible code optimizations to be detected more easily. Additionally, these tools suggest
+some code improvements to enhance code maintainability and efficiency.
 
 \section{ Is the outcome of the tools meaningful? What would be required to make it meaningful?}
 
@@ -71,7 +76,8 @@ Here is a summary of errors from the PMD outcome:
 
 \section{Conclusions}
 
-The results produced by Checkstyle and PMD are generally meaningful, especially in highlighting key issues related to indentation, whitespace, and coding conventions. These problems impact code readability and compliance with style guidelines. However, the output could be improved by offering better context, grouping similar errors, suggesting automatic fixes, and reducing verbosity. The tools’ findings closely align with what would be discovered during a manual code review, though they are often more precise and exhaustive.
+Checkstyle and PMD provide fairly relevant results, particularly regarding indentation, variable declarations (use of final), the use of spaces around special characters, and some code optimizations (unnecessary casts, non-optimal for loops).
+Moreover, the syntax error reports are clearly and simply formatted, making them easy to understand. These tools are a valuable asset for maintaining clean syntax and can greatly facilitate the work of future developers working on the same code.
 
 \newpage
 % Note: The appendix should start on page 2. Use \newpage if necessary.
