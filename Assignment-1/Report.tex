@@ -27,9 +27,6 @@ group I,
 
 \date{25/04/2025}
 
-
-
-
 \maketitle
 
 \begin{abstract}
@@ -87,21 +84,53 @@ Moreover, the syntax error reports are clearly and simply formatted, making them
 % Note: The appendix should start on page 2. Use \newpage if necessary.
 
 \begin{appendix}
-\section{Appendix : NaturalRanking.java}
+\section{NaturalRanking.java}
+\textbf{Tool Output Summary:}
+\begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \item \textbf{Total Errors:} 50+
+    \item \textbf{Error Type:} 
+    \begin{itemize}
+        \item Indentation
+    \end{itemize}
+    \item \textbf{Additional Notes:}
+    \begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+        \item The header limitation was deleted to avoid issues with the Checkstyle bash function. While this allowed the tool to run smoothly, it may have excluded header-related checks from the analysis.
+    \end{itemize}
+\end{itemize}
 
+\section{SimpleRegression.java}
+\textbf{Tool Output Summary:}
+\begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \item \textbf{Total Errors:} 200+
+    \item \textbf{Error Type:} 
+    \begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+        \item Indentation
+        \item WhitespaceAfter
+        \item ParenPad
+        \item WhitespaceAround
+        \item NoWhitespaceAfter
+    \end{itemize}
+    \item \textbf{Additional Notes:}
+    \begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+        \item Certain errors are more prevalent, which can degrade both the readability of the code and its maintainability over time.
+    \end{itemize}
+\end{itemize}
+
+\section{Covariance.java}
+\textbf{Tool Output Summary:}
+\begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \item \textbf{Total Errors:} 10+
+    \item \textbf{Error Type:} 
+    \begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+        \item Indentation
+    \end{itemize}
+    \item \textbf{Additional Notes:}
+    \begin{itemize}[itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
+        \item Most of the errors are related to incorrect indentation, which negatively impacts the code’s readability and could make its maintenance more difficult.
+    \end{itemize}
+\end{itemize}
+\section{Recommandations}
+Use an IDE or tool with auto-formatting capabilities to enforce consistent indentation. Integrate Checkstyle into the CI/CD pipeline to catch such issues early. Provide developers with training or documentation on the project's coding standards
 \end{appendix}
-
-Tool Output Summary:
-
-Total Errors: 50+
-Error Type: Indentation
-Additional Notes:
-
-The header limitation was deleted to avoid issues with the Checkstyle bash function. While this allowed the tool to run smoothly, it may have excluded header-related checks from the analysis.
-Recommendations:
-
-Use an IDE or tool with auto-formatting capabilities to enforce consistent indentation.
-Integrate Checkstyle into the CI/CD pipeline to catch such issues early.
-Provide developers with training or documentation on the project's coding standards
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
