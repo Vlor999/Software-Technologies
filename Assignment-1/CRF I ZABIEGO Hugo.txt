@@ -1,0 +1,105 @@
+Code review form - Software Technology - Summer Term 2025
+
+Author: ZABIEGO Hugo (12445574)
+Source code: stat/correlation/Covariance.java
+
+-----------------------
+
+1.) General: 
+
+Does the code work?
+
+* Yes, the code works correctly and computes the covariance between random variables X and Y incrementally, properly initializes the starting matrix, and performs several checks to ensure the calculation proceeds correctly.
+
+Does it perform its intended function, the logic is correct etc.?
+
+Is all the code easily understood?
+
+* There are many different cases depending on the number of arguments in the function, but the code remains understandable and it’s not difficult to identify which functions to use. However, many functions call other functions, so you need to navigate through the code to fully grasp the exact flow of the calculation.
+
+Does it conform to your agreed coding conventions?
+
+* The functions and variables follow CamelCase naming conventions, variable names are consistent, and the classes are understandable at first glance. Visibility (public, private, protected) is properly specified, and a few exceptions are thrown where there is a potential compilation error. Moreoever, more than 50\% of the file are comments, so this particular convention is also respected. 
+
+Is the code as modular as possible?
+
+* Each method is static and self-contained, the classes are well structured, and there is no overwriting of values or unnecessary functions.
+
+Is there any redundant or duplicate code?
+
+* There is code repetition between different functions that serve the same purpose but handle a different number of arguments, and this code could have been refactored. As a result, there is redundancy in this part of the code.
+
+Can any global variables be replaced?
+
+* There is any global variables in this code.
+
+Is there any commented-out code?
+
+* No, the code is clean and does not contain any such commented-out code, all the code written is used.
+
+Do loops have a set length and correct termination conditions?
+
+* The loops have correct termination conditions and all properly end, but some loop-ending values are not verified and could potentially be null — for example, xArray.length assumes the array is not null, but this is not guaranteed, so its length may not exist.
+
+
+2.) Security:
+
+Are all data inputs checked (for the correct type, length, format, and range) and encoded?
+
+* Not all elements are checked, especially for null values in arrays or functions. As a result, several parts of the code are missing exceptions for missing or empty values.
+
+Where third-party utilities are used, are returning errors being caught?
+
+* Yes, specific exceptions are properly used, exceptions are thrown when they are needed.
+
+Are output values checked and encoded?
+
+* The output values are of the expected type, but they are not always explicitly checked; it is simply assumed that the returned values will not cause any issues in the code.
+
+Are invalid parameter values handled?
+
+* No, the arguments are not always handled when they have a null value, which makes them incompatible in certain functions. I therefore believe that invalid parameters are not properly managed in this code.
+
+
+3.) Documentation:
+
+Do comments exist and describe the intent of the code?
+
+* Yes, the comments clearly explain the purpose and behavior of most of the functions, following the Javadoc standard. Comments before the Covariance class gives us a good explanation of the way to compute it.
+
+Are all functions commented?
+
+* Yes, the parameters, the purpose, and the return value are clearly described for each function.
+
+Is any unusual behavior or edge-case handling described?
+
+* Yes, the exceptions are explained in comments just before the function code, making it very clear and easy to understand unusual behaviors.
+
+Are data structures and units of measurement explained?
+
+* Yes, the few class parameters are explained in comments, but I did not see any explanation of units of measurement in this code.
+
+Is there any incomplete code? If so, should it be removed or flagged with a suitable marker like ‘TODO’?
+
+* Not at all.
+
+
+4.) Testing:
+
+Is the code testable? I.e. don’t add too many or hide dependencies, unable to initialize objects, test frameworks can use methods etc.
+
+* Yes, each method returns a function that is easily testable. It is easy to test whether the covariance values are correct using simple examples, and to check whether the exceptions work properly.
+
+Do tests exist, and are they comprehensive?
+
+* Yes, absolutely. When performing a grep on the word "covariance," we can see several covariance calculations as well as assertions on the return values, so the values are verified. Moreover, the test code is quite understandable, and it is easy to navigate in case of errors.
+
+Could any test code be replaced with an existing API?
+
+* The test code is already very optimized, I don't think it can be made more efficient.
+
+
+Summary : 
+
+The code correctly computes the covariance between random variables X and Y, ensuring proper initialization and validation of calculations. While the code is generally understandable, there is repetition due to handling different numbers of arguments in similar functions, which could be refactored. Input validation is insufficient, particularly for null values, which can cause issues in certain functions. However, exceptions are well-explained in the comments. The code is well-documented with clear descriptions of parameters and behaviors, though it lacks explanations for units of measurement. Testing is straightforward, with checks for covariance calculations and exception handling, though the tests could be more comprehensive.
+

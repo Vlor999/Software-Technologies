@@ -89,6 +89,3 @@ Are arrays checked for ‘out-of-bound’ errors?
 
 Could any test code be replaced with an existing API?
 * Not to my knowledge no.
-
-
-
