@@ -39,6 +39,38 @@ apt-get install wget
 
 ### Launch GraphWalker Studio
 
+Before launching take care that the `java` version that you are using is `java` **11**. To do so :
+```bash
+java --version
+``` 
+if it return : `java 11.X.Y` then everything is good. Otherwise you have to download it : 
+```bash
+brew install openjdk@11 # For macOS
+## You may need for macOS to use this command to link it : 
+sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+# or
+sudo apt install openjdk-11-jdk # For Linux
+```
+To be sure everything works properly you can verify that all the versions are here with  : 
+```bash 
+/usr/libexec/java_home -V
+```
+Then you'll see something like : 
+```bash
+Matching Java Virtual Machines (2):
+    23.0.1 (arm64) "Oracle Corporation" - "Java SE 23.0.1" /Library/Java/JavaVirtualMachines/jdk-23.0.1.jdk/Contents/Home
+    11.0.27 (arm64) "Homebrew" - "OpenJDK 11.0.27" /opt/homebrew/Cellar/openjdk@11/11.0.27/libexec/openjdk.jdk/Contents/Home
+/Library/Java/JavaVirtualMachines/jdk-23.0.1.jdk/Contents/Home
+```
+
+Then you have to temporarily activate the **11** verison of `java` : 
+```bash
+export JAVA_HOME=$(/usr/libexec/java_home -v 11) # macOS
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 # Linux
+# Then for both : 
+export PATH=$JAVA_HOME/bin:$PATH
+```
+
 Start the GraphWalker Studio server:
 ```bash
 java -jar graphwalker-studio-4.3.3.jar
