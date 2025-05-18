@@ -1,0 +1,68 @@
+\documentclass[twocolumn,10pt]{article}
+\usepackage{times}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{pdfpages}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=10mm,
+ right=10mm,
+ top=5mm,
+ bottom=20mm
+ }
+ \usepackage[T1]{fontenc} 
+
+% Use this template for your reports in the Software Technology course. Please submit the report as a PDF and not as a LaTeX file. 
+
+\begin{document}
+
+\title{Assignment 2 - Crossing road}
+\author{ADNET Willem (12444262), Klemens Hammerer (12211961), and ZABIEGO Hugo (12445574) \\
+group I, 
+}
+
+\date{18/05/2025}
+
+
+
+
+\maketitle
+
+\begin{abstract}
+
+The second task involves performing software testing to ensure that a system functions correctly. We have access to the GraphWalker tool, which generates tests based on a provided model. In our case, we are implementing a traffic light system without conflicts; vehicles must not interfere with each other in various configurations to prevent any accidents. As Group I, we have created an intersection where vehicles can go straight ahead or turn left. It is important to carefully consider the order in which the traffic lights turn green to avoid any conflicts. For example, if the North and South lights are green for going straight, the South light for turning left cannot be green at the same time, as that movement would cross the path of the Northbound traffic. Furthermore, the sequence of the lights should be optimized as much as possible to avoid having too many steps in the traffic light cycle.
+
+\end{abstract}
+
+\section{Introduction}
+
+Nowadays, car traffic is at the heart of urban life. It is therefore essential to ensure smooth traffic flow at intersections in order to ease congestion and avoid conflicts during directional changes. Task 2 involves implementing this traffic optimization at crossroads, with a specific configuration: vehicles can go straight or turn left from all four directions. To support this, we are using the GraphWalker tool, which will be helpful in testing the solution, as it verifies whether the traffic light sequence behaves as intended.
+
+\section{Creation of an efficient graph}
+
+The objective was to define an efficient and conflict-free traffic light sequence. It was therefore necessary to minimize the number of phases and identify which lights could be synchronized. We observed that opposite directions (North and South / East and West) do not create conflicts when going straight, so it's clear they can operate simultaneously.
+
+However, we also needed to include a phase for left-turning vehicles. These left turns cannot be synchronized with vehicles coming from the opposite direction. For example, cars coming from the North cannot turn left if the South-bound straight lane has a green light, as this creates an unavoidable conflict.
+
+Our idea is as follows: for each direction, vehicles go through in two phases — one dedicated to straight movements (in both directions), and another reserved for left turns (only one direction at a time).
+
+For example, we can first allow South-bound straight and left-turning traffic. Then, we stop the South left-turn flow to allow North-bound straight traffic. Once the South left turn is red, North-bound left-turn traffic can proceed, and so on for the other directions. This results in a complete cycle of phases that eventually returns to the starting configuration — South straight and South left.
+
+This implementation ensures regularity in the traffic light sequence, eliminates uncertainty about which light will turn green next, and maximizes the efficiency of light changes.
+
+\section{Choices for the Implementation in GraphWalker}
+
+We chose to create a directed graph in the software, following a defined sequence, as we did not include the red light configuration at the center. Indeed, another implementation approach is to let the testing software decide which lights turn green, which introduces randomness. However, we found this less efficient, since the software could sometimes give the green light to the same direction multiple times in a row. Therefore, we decided that it made more sense to define a fixed order of light changes, ensuring that each direction gets its turn before returning to the initial configuration. This method gives equal importance to all directions and eliminates uncertainty regarding the traffic light timing.
+
+\section{Conclusions}
+
+To conclude, by using the GraphWalker tool, we implemented a traffic light regulation system that meets the given conditions: allowing both straight and left-turn movements from each direction. This solution is optimized and efficient in minimizing the number of traffic light changes.
+
+% Note: The appendix should start on page 2. Use \newpage if necessary.
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
