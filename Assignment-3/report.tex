@@ -44,11 +44,12 @@ To do this, we used several tools, depending on the operating system:
 \begin{itemize}
     \item macOS: \texttt{/usr/bin/time -l} or \texttt{powermetrics}
     \item Linux: \texttt{powerstat}, \texttt{powertop}, or \texttt{perf}
-    \item Windows
+    \item Windows: \texttt{Intel Power Gadget}
 \end{itemize}
 
 These tools often rely on hardware-specific capabilities. 
 For example, Apple Silicon chips present additional challenges, as their energy consumption data is less accessible compared to other systems, where such data can be more easily retrieved.
+That is why we used different programs for different operating systems / hardware.
 
 \section{Energy tests on different sum computations}
 
@@ -97,7 +98,7 @@ The \texttt{powermetrics} analysis was performed using the Python script \texttt
 
 \subsection{Results and discussion}
 
-The results showed into the results files : \texttt{heavyConsumption.md} compare to the file : \texttt{lightConsumption.md} shows clearly that adding some floating points calculs, not reusing previous resulst and increasing the number of threads.
+The results showed into the results files : \texttt{heavyConsumption.md} compare to the file : \texttt{lightConsumption.md} shows clearly that adding some floating points calculations, not reusing previous results and increasing the number of threads.
 
 \begin{itemize}
     \item More floating-point operations increased energy use.
@@ -122,7 +123,44 @@ As a matter of number the results are the next ones :
     \caption{Comparison of resource and energy usage between heavy and light program versions.}
 \end{table}
 
-\subsection{Reflection on energy measurement}
+\section{Memory accesses and Types}
+In this part of the task we used a program that just writes every second value counting up to storage and then in a second loop we display it.
+
+\subsection{Program Description}
+In the non optimized part the program iterates from 0 to the defined max value. A bool that is just switched every iteration keeps track if we are on a odd or even number. If the number is even the number is added to a ArrayList of integers.
+In the printing phase again every other number is skipped and we then read the wanted value from the list and print it.
+
+The optimizations for the optimized program remove the need for the bool and just increase the iteration variable by two. With that 2 ifs are removed. Same for the printing phase.
+The other optimization was to use an array instead of a list. This has the benefit that the memory access is constant so writing and reading takes place in the same time if it's the first or last element.
+In a list reading takes longer the longer the list gets.
+
+\subsection{Measurement tools}
+In this part we used \texttt{Intel Power Gadget} as the software to read power usage.
+As well as the power usage other important information is given by the program like the cpu frequency, thermal values and also elapsed time.
+All these values help better understand what really is happening with your code and if it's getting more sustainable or not.
+
+\subsection{Results and discussion}
+To get more reliable Values the programs were each run 3 times. The following values are the averages of the 3 runs.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|}
+         \hline Metric & Non optimized & Optimized \\ \hline
+         Energy [Joules] & 306,2 & 89,22 \\
+         Energy [mWh] & 85 & 24,08 \\
+         DRAM Energy [Joules] & 13,95 & 4,45 \\
+         DRAM Energy [mWh] & 3,87 & 1,26 \\
+         Elapsed Time [s] & 10,27 & 3,5 \\ \hline
+    \end{tabular}
+    \caption{Results of the measurements}
+    \label{tab:results}
+\end{table}
+
+As can be seen in Table \ref{tab:results} the optimized code uses much fewer resources to execute the code while achieving the same output.
+This is mainly due to the execution time. The non optimized code took about 10 seconds to execute. the optimized one took 3,5. If you take any other value of the optimized coloumn and multiply it by about three - as the optimized version was about 3 times as fast -- you'll get comparable values. 
+The execution time is influenced by the loops but also by the memory accesses. Since you have to iterate through the list to get to later values the execution time gets longer as the list gets bigger. This isn't as big a problem with the limit we set in this example but when we tested it with higher limits the execution time grew fast.
+
+\section{Reflection on energy measurement}
 
 Measuring energy consumption in software is complex and hardware-dependent. However, relative comparisons (same machine, repeated runs) provide reliable insight. The most effective way to measure software sustainability is:
 
@@ -133,6 +171,13 @@ Measuring energy consumption in software is complex and hardware-dependent. Howe
 \end{itemize}
 
 \subsection{Conclusion}
+The goal of this task was to learn about sustainability and energy consumption in combination with software development. How does our code affect execution time, energy consumption and how would someone optimize it.
+
+The most obvious improvement one can make to it's code is to shorten the execution time. Skipping unnecessary code segments (calculations) / iterations in loops is an example for that.
+Also improving your algorithms can have a effect on energy consumption.
+Another improvement is data storage. Depending on your use an array maybe could do the job better than a list. Since accesses to arrays are faster this could lower execution time and with that energy consumption.
+Last but not least different operations have different complexity and use different amounts of energy.
+An example for that would be the pow function. It is really expensive to do that operation so maybe think about other ways to calculate the same result. For example if you square a value, just multiply it with itself instead of using the pow function.
 
 
 % Note: The appendix should start on page 2. Use \newpage if necessary.
