@@ -24,18 +24,13 @@ public class NonOpti {
             
     }
 
-
-    // Param : set of values s, power p
-    // Return : sum(i^p for i in s)/length(s)^p
+    // @Param : set of values s, power p
+    // @Return : sum(i^p for i in s)/length(s)^p
     private static Double sumPower(ArrayList<Double> s, int p){
         double sum = 0;
         for (double value : s) {
-            sum += Math.pow(value,p);
+            sum += Math.pow(value, p);
         }
         return sum/Math.pow(s.size(),p);
     }
-
-         
-        
-        
 }

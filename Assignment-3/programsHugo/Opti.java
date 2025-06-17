@@ -46,8 +46,4 @@ public class Opti {
         System.out.println(sum4/Math.pow(length,4));
         System.out.println(sum5/Math.pow(length,5));
     }
-
-         
-        
-        
 }

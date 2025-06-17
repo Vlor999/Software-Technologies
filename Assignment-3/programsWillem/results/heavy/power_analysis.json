@@ -1,0 +1,74 @@
+{
+  "execution_summary": {
+    "total_duration_seconds": 23.0,
+    "sample_count": 23,
+    "average_sample_interval": 1.05,
+    "start_time": "2025-06-17 13:55:08",
+    "end_time": "2025-06-17 13:55:31"
+  },
+  "power_consumption": {
+    "cpu_power": {
+      "min_mw": 1920,
+      "max_mw": 11995,
+      "average_mw": 4939,
+      "median_mw": 4397,
+      "std_dev": 3179.14
+    },
+    "gpu_power": {
+      "min_mw": 0,
+      "max_mw": 35,
+      "average_mw": 7.96,
+      "median_mw": 7,
+      "std_dev": 8.71
+    },
+    "combined_power": {
+      "min_mw": 1943,
+      "max_mw": 12011,
+      "average_mw": 4946.83,
+      "median_mw": 4402,
+      "std_dev": 3178.43
+    }
+  },
+  "cpu_analysis": {
+    "e_cluster": {
+      "average_usage_percent": 41.19,
+      "max_usage_percent": 99.97,
+      "min_usage_percent": 20.84
+    },
+    "p0_cluster": {
+      "average_usage_percent": 61.54,
+      "max_usage_percent": 100.0,
+      "min_usage_percent": 0.07
+    },
+    "p1_cluster": {
+      "average_usage_percent": 47.83,
+      "max_usage_percent": 100.0,
+      "min_usage_percent": 0.0
+    }
+  },
+  "gpu_analysis": {
+    "average_usage_percent": 1.73,
+    "max_usage_percent": 10.19,
+    "min_usage_percent": 0.0,
+    "samples_with_gpu_activity": 18
+  },
+  "energy_estimation": {
+    "total_energy_millijoules": 113777.0,
+    "total_energy_joules": 113.777,
+    "total_energy_watt_hours": 0.031605,
+    "average_power_watts": 4.947,
+    "duration_seconds": 23.0
+  },
+  "performance_insights": {
+    "high_power_phases": {
+      "threshold_mw": 7420.24,
+      "high_power_sample_count": 4,
+      "percentage_of_execution": 17.39
+    },
+    "power_phases": {
+      "initial_average_mw": 8974.4,
+      "peak_average_mw": 9971.2,
+      "final_average_mw": 2393
+    }
+  }
+}
