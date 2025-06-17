@@ -1,0 +1,66 @@
+\documentclass[twocolumn,10pt]{article}
+\usepackage{times}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{pdfpages}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=10mm,
+ right=10mm,
+ top=5mm,
+ bottom=20mm
+ }
+ \usepackage[T1]{fontenc} 
+
+% Use this template for your reports in the Software Technology course. Please submit the report as a PDF and not as a LaTeX file. 
+
+\begin{document}
+
+\title{Assignment 2 - Crossing road}
+\author{ADNET Willem (12444262), Klemens Hammerer (12211961), and ZABIEGO Hugo (12445574) \\
+group I, 
+}
+
+\date{18/05/2025}
+
+
+
+
+\maketitle
+
+\begin{abstract}
+
+
+
+\end{abstract}
+
+\section{Introduction}
+
+
+
+\section{Energy tests on different sum computations}
+
+First, we created a program that calculates different sums of the values in an array sequentially : 
+
+$\frac{1}{n^k}\times \sum_{i=0}^n X_i^k, k=1,..,5$ with n the length of the array under study.
+
+We then made two programs with different levels of optimization.
+The less optimized program calculates each sum one by one and therefore uses many loops to reach the final result.
+The optimized program, on the other hand, uses a single loop to calculate and add the different sums.
+One loop thus performs the calculations for all the sums, which helps reduce complexity.
+Additionally, some powers are sometimes also optimized to avoid recalculating them.
+
+We then moved on to the testing phase and noticed differences in energy consumption: the Cumulative Processor Energy indicates an average of 215 Joules for the non-optimized program and around 160 Joules for the optimized one (test performed using the Powerstat tool).
+Furthermore, with the second tool, Perf, we obtained an average of 80,000 Joules versus 55,000 Joules for the energy-cores category, and 155,000 versus 117,000 for energy-psys.
+We also observed that all energy-related categories are affected by the difference in programming, which shows that program optimization is effective not only at the CPU level, but also in terms of RAM, GPU, and other components.
+\section{Conclusions}
+
+
+% Note: The appendix should start on page 2. Use \newpage if necessary.
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
