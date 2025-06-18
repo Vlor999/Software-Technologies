@@ -67,6 +67,19 @@ We then moved on to the testing phase and noticed differences in energy consumpt
 Furthermore, with the second tool, Perf, we obtained an average of 80,000 Joules versus 55,000 Joules for the energy-cores category, and 155,000 versus 117,000 for energy-psys.
 We also observed that all energy-related categories are affected by the difference in programming, which shows that program optimization is effective not only at the CPU level, but also in terms of RAM, GPU, and other components.
 
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|}
+         \hline Metric & Non optimized & Optimized \\ \hline
+         Energy Cores [Joules] & 56,15 & 78,24 \\
+         Energy RAM[Joules] & 4,48 & 6,01 \\
+         Energy GPU[Joules] & 0,69 & 0,89 \\
+         Energy Psys [Joules] & 118,7 & 155,5 \\ \hline
+    \end{tabular}
+    \caption{Results of the measurements}
+    \label{tab:results}
+\end{table}
+
 
 \section{Experimental Setup and Observations (Apple Silicon)}
 
@@ -120,7 +133,7 @@ As a matter of number the results are the next ones :
         Energy (J)          & 113   & 3.251 \\
         \hline
     \end{tabular}
-    \caption{Comparison of resource and energy usage between heavy and light program versions.}
+    \caption{Results of the measurements}
 \end{table}
 
 \section{Memory accesses and Types}
@@ -170,11 +183,11 @@ Measuring energy consumption in software is complex and hardware-dependent. Howe
     \item Focus on relative differences between program versions rather than absolute values.
 \end{itemize}
 
-\subsection{Conclusion}
+\section{Conclusion}
 The goal of this task was to learn about sustainability and energy consumption in combination with software development. How does our code affect execution time, energy consumption and how would someone optimize it.
 
 The most obvious improvement one can make to it's code is to shorten the execution time. Skipping unnecessary code segments (calculations) / iterations in loops is an example for that.
-Also improving your algorithms can have a effect on energy consumption.
+Also improving your algorithms can have an effect on energy consumption.
 Another improvement is data storage. Depending on your use an array maybe could do the job better than a list. Since accesses to arrays are faster this could lower execution time and with that energy consumption.
 Last but not least different operations have different complexity and use different amounts of energy.
 An example for that would be the pow function. It is really expensive to do that operation so maybe think about other ways to calculate the same result. For example if you square a value, just multiply it with itself instead of using the pow function.
